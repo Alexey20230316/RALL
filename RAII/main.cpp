@@ -3,14 +3,16 @@
 class Smart_arry
 {
 public:
+	Smart_arry(const Smart_arry&) = delete;               // запрещаем конструктор копирования 
+	Smart_arry& operator=(const Smart_arry&) = delete;    // запрещаем конструктор присваивания
 	Smart_arry(int size);
 	void add_element(int element);
 	int get_element(int element);
 	~Smart_arry();
 private:
-	int* arr;
-	int i = 0;
-	int size;
+	int* arr;   // указатель на обьект типа int
+	int i = 0; // наполненность массива
+	int size;  // размер
 };
 
 Smart_arry::Smart_arry(int size)
@@ -35,7 +37,7 @@ void Smart_arry::add_element(int element)
 }
 int Smart_arry::get_element(int element)
 {	
-	if (element >= size)
+	if (element > i)   // если индекс запрашиваемого элемента больше i
 	{
 		throw std::exception("Index is greater than allowed!!! ");
 	}
